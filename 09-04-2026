@@ -1,0 +1,124 @@
+Q. What is the difference between useMemo and useCallback?
+
+ans:- usememo is a hoc  hight order component , it is used for the prevents unnecessery re-render the compoent , when the props are changes then its render. it is used the the better perfermance .
+
+useCallback is used inside the parent function when we call the child fucntion , means in a function when we call another child function then we used the useCallback . ❌❌❌❌
+
+
+✅✅✅✅---->
+
+useMemo:- used to memoze (cache ) a cmputed value
+prevents expensive recalculations
+
+const result = useMemo(() => expensiveFunction(a, b), [a, b]);
+
+usecallback:-- used to memoize a function
+
+prevents function recreation on every render
+
+const handleClick = useCallack (() => {
+    console.log("clicked");
+}, []);
+
+
+
+useMemo is used to memoize a computed value to avoid expensive recaluation, while useCallback is used to memoize a function to prevent unnecessary re-reaction on each reder.
+
+
+q. what is key props in React and why is it important?
+
+in react key are used when any array fillter or map functionlity used then we can used the key to trigger the array for modify and given the new array .
+
+
+----->
+ key is a unique identifier for elements in a list
+ helps react in reconciliation (diffing process)
+ improves performance by avoidig unnecessary re-renders
+
+
+
+
+ ---> The key props is uniwues identifier used when redering list in react. it helps react identify which items have changes been added or removed allowing effient updated during reconciliation.
+
+ const list = users.map(user => (
+    <list key=(user.id)>{user.name}</li>
+ ));
+
+ q. what id the difference between functinal componet ad class comoetn in react.
+
+ ans:- now a days in morder react project we can used the functional component like use funciton contact() =>{
+
+ } ❌❌❌
+ class base camponent is the older concept which are are rarely used now liek react.contact (){
+
+ }❌❌❌
+
+ ✅✅✅✅---->
+ function contact () {
+    return <div>hello</div>
+ }
+
+ class Contact extends React.Componet {
+    render() {
+        return <div>hello</div>;
+    }
+ }
+
+ ->Fucntional component:
+ Simple javascript function
+ used Hooks (useState, useEffect)
+ Clear and easier to write
+
+
+ class componet:
+ used es6 classes.
+ has lifecucle methods (componentDidMount, etc.)
+ Uses this.state and this setState
+
+ Functional components are simple javaScript functions that use React Hooks to manage state and lifecycle while class components are ES6 classes that use lifecycle methods and this.state for state management. Functional components are prefreered in modern React due to simplicity and better readability.
+
+ q. what are the react Hooks rules.
+
+ - > Mounting 
+ -> Updating
+ -> unmounting
+
+ React hooks must be called only at the top level of a componetn and not inside loops or condition and they should only be used inside functional components or custom hooks .
+
+
+
+ q. what is context api and when should you used it?
+
+ ans:- in react when we can pass the data in a one component to another componet then we used props , so that in this process we can not pass the data direct to the child component so like multiple pages we can pass the data , so the using the context api we can pass the data direct to the child componet without share the parent componanet to child componetn like one by one . it is easy and fast works
+
+ ans:-
+ conext api is used to share data globally across components without passing props manually at everu level ( avoiding prop drilling )
+
+ ---> Context API is a React fearure used to share data gloablly across compoents without passign props through very level. it helps avoid prop drililign by using a provider to supply data and useContext to consume it in any component.
+
+
+
+ const userContext = React.creatContext();
+
+ function App(){
+    rerurn (
+        <UserContext.Provider value="Jhon">
+        <Child />
+        </UserConext.Provider>
+    );
+ }
+
+ function child() {
+    const user = useConext(userContext);
+    return <h1>{user}</h1>;
+ }
+
+
+ q. what is the differenc between context api and redux ?
+
+ ans:- context api is custom we can make the own as per that requirement , and its pass the direct child component to data . context api make and easy to used . we can not install the any packeage or anythig. but in the redux , we can install the pacakege like redux tollkit after that we can used to manage the state and values of the data. it is slightly dificalut to setup and make  also new developer hard to used 
+
+
+
+
+-> Context api is used for simple flobal state management and avoids prop drilling and avoids prop drilling , while redux  is a more powerfulll state management library used for large application with complex state logic. Redux provides a centralized store better scalability and optimized performance whereas context api is simpler but less efficent for large-scale state updates.

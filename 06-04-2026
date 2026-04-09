@@ -1,0 +1,123 @@
+1. What is the difference between state and props in react?
+
+ans:- state:- in react state used for manage the varibles functionality like const [count setCount] = useState(0); , and state are mutable like we can modify in that parent page.
+ props:- in react props are basically passes through the parent component to child componet, props are immutable means we can not modify in the child component , this is only reable in the child component . its alwasys passes in the child component to parent component.
+
+
+ State is a local , mutable data managed inside a componentn suing hooks like useState, and it can be updated using setter functions.
+
+ props are read-only passed from parent to child comoonents to make components reusable and dynamic.
+
+
+ 2.What is the purpose of the useEffect hook in React?
+
+ ans:- In React useEffect is a hooks and in that hooks using we can calll the api or fetch the api . useEffect load after the page was render . using the useEffect then fetch the api , and other functionlity we can add in the page .
+
+ ---> useEffect is used for:
+   Api calls
+   subscriptions (websocket , events)
+   Dom manipulation
+   timers (setTimeout, setInterval)
+   cleanup operatios
+
+
+
+   --> useEffect is a React hook used to perform side effects like API calls event listerners and timers. It runs after the component renders and can be controlled using dependecy array. it also supports cleanup functions.
+
+
+   3. what is the differece between controlled and uncontrolled components in react ?
+
+   ans:- controlled component means basically which are the controller react hook , like in the page i have used form inside the form i have different type of user profile details like name , address , email , phone  these are i can manage using the state . and these are fully controller by react hooks . after that page was render the those are render.
+
+   uncontrolled:-  which component are controll by dom , like before page was render then its load like in the page i have used liek input file . like these can not controller the react hook , it controll by the dom so that page was uncontrolled componet. 
+
+
+
+   ------>
+   controlled component are form elements whose valuesare managed by react state using useState and updated via onchange.
+
+const [name, SetName] = useState("");
+<input value={name} onChange{(e) => setName(e.target.value)} />
+
+
+   uncontrolled components store thier own state in the dom and are accessed usign ref insted of react state.
+
+
+const inputRef = useRef();
+
+<input ref={inputRef} />
+
+
+Q. what is Virtual DOM in React and why is it used ?
+
+ans- In react virtual dom is a copy of the real dom. virtual dom is lightweight , so that it is faster then the other framework . when we change the code then virtual dom updated after that compiler compaire the real dom and virtual dom then update the real dom change code .
+
+
+----->
+virtual dom is a lightweight copy of the real dom , when changes occur react updated the virtual dom first and then compares it with the previous version using a diffing algorithm (reconnciliation). only the chnages parts are updated in the real dom which imporves performnace .
+
+
+Q. what is the difference between useState and useRef?
+
+ans:- 
+useState is basically used for the controllerd component to manage the state vaules and management the form data vaules. like const [name. setName] = useState(""); . this is the react hoook , its controll the state values. after the page was reder the hooks was load.
+
+useRef is basically used for the uncontrolled component . this is also a react hook.but its handles the dom. it is used for the dom manipulation. like one example 
+const  inputRef = useRef();
+<input ref={inputRef} />
+
+
+
+--->
+
+useState is used to manage state in a component and updating it causes the component to re-render.
+
+useRef is used to store mutable values or access DOM elements and updateing it does not trigger a re-render.
+
+
+
+q. what is lifting state up in React ?
+
+ans:- in react component when we passes the state values child component to the parenent component using the usecallback then that technic or the process we call the lifting state up in a react . ❌❌❌❌❌
+
+✅✅---->
+Lifing state up means :->
+ Moving state from child compnent -- parent component
+ so that multiple child components can share the same state
+
+
+
+
+ ---> Lifing state up is the process of moving state form a child component to a common parent compoent so that the state can be shared and managed centrally and then passed down to child components via props .
+
+
+ function Parent () {
+    const [data, setData] = useState("");
+    return <child setData={setData} />;
+ }
+
+ function child ({ setData }){
+    return <input onChange={(e) => setData(e.target.value)} />;
+ }
+
+ q. what is React.memo and whe should uou use it.
+
+
+ ans:- react memo used for the call the history of the previous data page , when in the child component we can used the usememo for the data calling ❌❌❌❌❌
+
+ ✅✅✅---->
+
+ React.memo is a higher order component (HOC).
+ its prevents unnecesssary re-rendering of a component .re-renders only when props changes
+
+ --> React.memo is a higher-order component that memoizes a functional component and prevents it from re-rendering unless it props chanegs , improving performance .
+
+
+
+ cons child = React.memo (({name})) => {
+    console.log("Rendered");
+    return <div>{name}</div>;
+ }
+
+
+   
